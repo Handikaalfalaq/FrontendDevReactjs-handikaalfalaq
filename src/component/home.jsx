@@ -1,14 +1,8 @@
-import { React, useState } from 'react'
+import { React} from 'react'
 import FilterNavigation from './page/main/filterNavigation.jsx'
 import Section from './page/main/section.jsx'
-import DetaiView from './page/detailView/detailView.jsx'
 
 function Home(){
-    const [modalDetaiView, setModalDetaiView] = useState(false);
-    const openModalDetaiView = () => {
-        console.log("saya") 
-        setModalDetaiView(true); 
-        }
 
     return(
         <div>
@@ -17,9 +11,7 @@ function Home(){
             <FilterNavigation/>
             <Section/>
 
-            <div style={{display:'flex', justifyContent:'center', margin: '100px auto' , padding: '10px 300px', fontWeight:'bold'}} onClick={openModalDetaiView}>LOAD MORE</div>
-
-            <DetaiView show={modalDetaiView} onHide={()=> setModalDetaiView(false)}/>
+            <button style={{display:'flex', justifyContent:'center', margin: '100px auto' , padding: '10px 300px', fontWeight:'bold'}} >LOAD MORE</button>
         </div>
     )
 }

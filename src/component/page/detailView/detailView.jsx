@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 function DetailView({show, onHide}) {
-    console.log(show);
     const closeModalDetailView = () => {
         onHide();
     };
