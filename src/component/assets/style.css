@@ -93,6 +93,11 @@
     color: #0D6EFD;
     font-weight: bold;
 }
+
+.buttonUpdateMenu{
+    display: flex;
+    margin: 0px auto; 
+}
 /* ---------------------------------------------------- Home ---------------------------------------------------- */
 .informasiHome {
     font-weight: 100; 

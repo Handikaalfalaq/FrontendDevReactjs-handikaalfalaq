@@ -31,7 +31,7 @@ function ModalUpdateRestaurant({show, onHide, dataDetileView}) {
         } catch (error) {
             console.log("Error:", error)
         }
-    }, [dataDetileView] ); 
+    }, [dataDetileView] );
 
     const handleChange = (e) => {
         setFormUpdateRestaurant({
@@ -53,8 +53,7 @@ function ModalUpdateRestaurant({show, onHide, dataDetileView}) {
                     jamTutup: formUpdateRestaurant.jamTutup
                 },
                 id : formUpdateRestaurant.id
-            } 
-            console.log("formData", formData)
+            }
             await axios.patch(API_URL + "restaurants/" + formUpdateRestaurant.id, formData ); 
             onHide();
             Swal.fire({
@@ -108,7 +107,7 @@ function ModalUpdateRestaurant({show, onHide, dataDetileView}) {
                 <Form.Control className="controlModalNewRestaurant" value={formatTime(formUpdateRestaurant.jamTutup)} name="jamTutup" onChange={handleChange} type="time" required/>
             </Form.Group>
             <Modal.Footer>
-                <Button variant="primary" type="submit" >Update Restaurant Baru</Button>
+                <Button variant="primary" type="submit" >Update Restaurant</Button>
             </Modal.Footer>
         </Form>
       </Modal>

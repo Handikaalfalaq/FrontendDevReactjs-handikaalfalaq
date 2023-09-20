@@ -8,6 +8,7 @@ import '../../assets/style.css';
 import FolderImage from '../../assets/folderImage';
 import ModalTambahMenu from '../modal/modalTambahMenu'
 import ModalUpdateRestaurant from '../modal/modalUpdateRestaurant'
+import ModalUpdateMenu from '../modal/modalUpdateMenu'
 
 function DetailView() {
   const {newDataDetailView} = useContext(DataContext);
@@ -16,8 +17,10 @@ function DetailView() {
   const [loading, setLoading] = useState(true)
   const [tambahMenu, setTambahMenu] = useState(false)
   const [updateRestaurant, setUpdateRestaurant] = useState(false)
+  const [updateMenu, setUpdateMenu] = useState(false)
+  const [idMenu, setIdMenu] = useState()
   const { index } = useParams();
-  const location = useLocation();
+  const location = useLocation();  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -46,6 +49,10 @@ function DetailView() {
   const handleOpenModal = () => { setTambahMenu(true); }
 
   const handleOpenUpdateRestaurant = () => {setUpdateRestaurant(true);}
+  const handleOpenUpdateMenu = (index) => {
+    setUpdateMenu(true);
+    setIdMenu(index)
+  }
 
   return(
   <>
@@ -62,7 +69,7 @@ function DetailView() {
                   ))}
               </div>
               <div>{dataDetileView.jenisMakanan}</div>
-              <Button className="buttonUpdate" onClick={handleOpenUpdateRestaurant}>Update Restaurant</Button> 
+              <Button className="buttonUpdate" onClick={handleOpenUpdateRestaurant}>Update Restaurant</Button>
             </div>
             <Button className="closeDetailView" onClick={() => closeDetailView()}>x</Button>
           </div>
@@ -82,7 +89,8 @@ function DetailView() {
                         ))}
                     </div>
                     <ListGroup.Item className='hargaSection'>Rp.{data.harga.toLocaleString()}</ListGroup.Item>
-                    <Card.Text className="informasiMenuDetailView">{data.informasiMenu} </Card.Text>
+                    <Card.Text className="informasiMenuDetailView">{data.informasiMenu}</Card.Text>
+                    <Button className="buttonUpdateMenu" onClick={() => handleOpenUpdateMenu(index)}>Update Menu</Button>
                   </Card.Body>
                 </Card>
               ))}
@@ -94,8 +102,9 @@ function DetailView() {
         <Button className='buttonSectionTambahMenu' onClick={handleOpenModal}>Tambah Menu</Button>
         <ModalTambahMenu show={tambahMenu} onHide={()=> setTambahMenu(false)} id={dataDetileView.id}/>
         <ModalUpdateRestaurant show={updateRestaurant} onHide={()=> setUpdateRestaurant(false)} dataDetileView={dataDetileView}/>
+        <ModalUpdateMenu show={updateMenu} onHide={()=> setUpdateMenu(false)} dataDetileView={dataDetileView} idMenu={idMenu}/>
 
-        <Button className="buttonCloseDetailView" onClick={() => closeDetailView()}> close </Button>
+        <Button className="buttonCloseDetailView" onClick={() => closeDetailView()} > close </Button>
         </div>
       
     ) : (
