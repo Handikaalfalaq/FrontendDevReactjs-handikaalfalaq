@@ -7,6 +7,7 @@ import { DataContext } from '../../context';
 import '../../assets/style.css';
 import FolderImage from '../../assets/folderImage';
 import ModalTambahMenu from '../modal/modalTambahMenu'
+import ModalUpdateRestaurant from '../modal/modalUpdateRestaurant'
 
 function DetailView() {
   const {newDataDetailView} = useContext(DataContext);
@@ -14,6 +15,7 @@ function DetailView() {
   const [dataDetileView, setDataDetileView] = useState([]);
   const [loading, setLoading] = useState(true)
   const [tambahMenu, setTambahMenu] = useState(false)
+  const [updateRestaurant, setUpdateRestaurant] = useState(false)
   const { index } = useParams();
   const location = useLocation();
 
@@ -43,6 +45,8 @@ function DetailView() {
 
   const handleOpenModal = () => { setTambahMenu(true); }
 
+  const handleOpenUpdateRestaurant = () => {setUpdateRestaurant(true);}
+
   return(
   <>
     {loading === false ? ( 
@@ -58,10 +62,9 @@ function DetailView() {
                   ))}
               </div>
               <div>{dataDetileView.jenisMakanan}</div>
+              <Button className="buttonUpdate" onClick={handleOpenUpdateRestaurant}>Update Restaurant</Button> 
             </div>
-            <Button className="closeDetailView" onClick={() => closeDetailView()}>
-              x
-            </Button>
+            <Button className="closeDetailView" onClick={() => closeDetailView()}>x</Button>
           </div>
 
           {dataDetileView.daftarMenu.length !== 0 ? (
@@ -90,8 +93,9 @@ function DetailView() {
 
         <Button className='buttonSectionTambahMenu' onClick={handleOpenModal}>Tambah Menu</Button>
         <ModalTambahMenu show={tambahMenu} onHide={()=> setTambahMenu(false)} id={dataDetileView.id}/>
+        <ModalUpdateRestaurant show={updateRestaurant} onHide={()=> setUpdateRestaurant(false)} dataDetileView={dataDetileView}/>
 
-          <Button className="buttonCloseDetailView" onClick={() => closeDetailView()}> close </Button>
+        <Button className="buttonCloseDetailView" onClick={() => closeDetailView()}> close </Button>
         </div>
       
     ) : (

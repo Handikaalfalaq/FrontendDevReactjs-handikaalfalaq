@@ -39,7 +39,7 @@ function ModalTambahMenu({show, onHide, id}) {
             const request = await axios.get(API_URL + "restaurants/" + detailRestaurant[0].id ); 
             request.data.daftarMenu.push(formData)
 
-            await axios.patch(API_URL + "restaurants/" + detailRestaurant[0].id, request.data );  
+            await axios.patch(API_URL + "restaurants/" + detailRestaurant[0].id, request.data ); 
 
             onHide();
             Swal.fire({
