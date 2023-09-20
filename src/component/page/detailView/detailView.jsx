@@ -77,8 +77,12 @@ function DetailView() {
           {dataDetileView.daftarMenu.length !== 0 ? (
             <div className="bodyDetailView">
               {dataDetileView.daftarMenu.map((data, index) => (
-                <Card className="cardDetailView" key={index}>
-                  <div className='imageDetailView' style={{ backgroundImage: `url(${FolderImage[data.imageMenu]})`}}></div>
+                <Card className="cardDetailView" key={index}> 
+                  {FolderImage[data.imageMenu] ? (
+                    <div className='imageDetailView' style={{ backgroundImage: `url(${FolderImage[data.imageMenu]})`}}></div>
+                  ) : (
+                    <div className='imageSection'>Tidak ada gambar</div>
+                  )}
                   <Card.Body>
                     <Card.Title>{data.namaMenu}</Card.Title>
                     <div style={{ display: 'flex' }}>

@@ -3,7 +3,15 @@
     {
       "namaRestaurant": "new Restaurant",
       "jenisMakanan": "indonesia",
-      "daftarMenu": [],
+      "daftarMenu": [
+        {
+          "namaMenu": "sate ayam",
+          "harga": "15000",
+          "ratingMenu": "5",
+          "imageMenu": "abc",
+          "informasiMenu": "sate"
+        }
+      ],
       "ratingRestaurant": 5,
       "status": {
         "jamBuka": "18:30",

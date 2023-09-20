@@ -34,7 +34,6 @@ function ModalTambahMenu({show, onHide, id}) {
                 imageMenu: formTambahMenu.imageMenu.replace(/\s+/g, ''),
                 informasiMenu: formTambahMenu.informasiMenu,    
             }
-            console.log("formData", formData);
 
             const request = await axios.get(API_URL + "restaurants/" + detailRestaurant[0].id ); 
             request.data.daftarMenu.push(formData)

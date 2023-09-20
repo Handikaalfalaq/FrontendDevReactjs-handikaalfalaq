@@ -105,9 +105,13 @@ function Section({status, price, categories}) {
         {newDataJsonSlice.map((data, index) => (
           <Card className='cardSection' key={index}>
             {data.daftarMenu.length !== 0 ? (
-              <div className='imageSection' style={{ backgroundImage: `url(${FolderImage[data.daftarMenu[0].imageMenu]})` }}></div>
+              FolderImage[data.daftarMenu[0].imageMenu] ? (
+                <div className='imageSection' style={{ backgroundImage: `url(${FolderImage[data.daftarMenu[0].imageMenu]})` }}></div>
+              ) : (
+                <div className='imageSection'>Tidak ada gambar</div>
+              )
             ) : (
-              <div className='imageSection'> belum ada menu</div>
+              <div className='imageSection'>belum ada menu</div>
             )}
             <Card.Body>
               <Card.Title className='titleSection'>{data.namaRestaurant}</Card.Title>
