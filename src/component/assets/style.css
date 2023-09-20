@@ -1,0 +1,251 @@
+/* ---------------------------------------------------- DetailView ---------------------------------------------------- */
+.detailView{
+    width: 100%;
+}
+
+.headerDetailView{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 30px;
+}
+
+.titleDetailView{
+    font-size: 30px;
+}
+
+.closeDetailView{
+    font-size: 35px;
+    border: 0px solid white;
+    color: red;
+    background-color: white;
+}
+
+.closeDetailView:hover{
+    font-size: 50px;
+    color: red;
+    background-color: white;
+    font-weight: bold;
+}
+
+.bodyDetailView {
+    align-items: center;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    justify-content: space-around;
+    grid-gap: 5px;
+}
+
+.cardDetailView{
+    width: 350px;
+    height: 450px;
+}
+
+.imageDetailView{
+    width: 100%;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px 5px 0px 0px
+}
+
+.informasiMenuDetailView {
+    height: 50px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; 
+    overflow: hidden;
+}
+
+.buttonCloseDetailView{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 20px auto;
+    font-size: 15px;
+    background-color: red;
+    border: 5px solid red;
+    padding: 4px 30px 7px;
+    border-radius: 15px;
+}
+
+.buttonCloseDetailView:hover{
+    background-color: white;
+    color: red;
+    border: 5px solid red;
+}
+
+.tidakAdaMenu{
+    display: flex;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttonSectionTambahMenu{
+    display: flex;
+    margin: 20px auto;
+    font-weight: bold;
+}
+
+.buttonSectionTambahMenu:hover{
+    background-color: white;
+    color: #0D6EFD;
+    font-weight: bold;
+}
+/* ---------------------------------------------------- Home ---------------------------------------------------- */
+.informasiHome {
+    font-weight: 100; 
+    width: 700px;
+}
+
+.buttonSectionButtom {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.buttonHome {
+    display: flex; 
+    justify-content:center;
+    align-items: center;
+    text-align: center;
+    width: 400px;
+    height: 50px;
+    font-weight: bold;
+    border: 2px solid #0D6EFD;
+    color: #0D6EFD; 
+    border-radius: 10px;
+}
+
+.buttonHome:hover{
+    background-color: #0D6EFD;
+    color: white
+}
+
+/* ---------------------------------------------------- Modal ---------------------------------------------------- */
+.headerModalNewRestaurant, .headerModalNewMenu{
+    margin-bottom: 10px;
+}
+
+.labelModalNewRestaurant, .labelModalNewMenu {
+    margin-left: 10%;
+    margin-bottom: 0px;
+}
+
+.controlModalNewRestaurant, .controlModalNewMenu {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+/* ---------------------------------------------------- Section ---------------------------------------------------- */
+.textDataKosong{
+    font-size: 40px;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.containerSection{
+    align-items: center;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    justify-content: space-around;
+    grid-gap: 5px;
+}
+
+.buttonSection {
+    width: 100%
+}
+
+.cardSection {
+    width: 350px;
+    height: 450px; 
+}
+
+.imageSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px 5px 0px 0px 
+}
+
+.titleSection{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1; 
+    overflow: hidden;
+}
+
+.informasiSection {
+    display:flex; 
+    justify-content:space-between; 
+    margin: 10px 0px
+}
+
+.jenisMakananSection{
+    margin-right: 10px;
+    font-size: 14px
+}
+
+.hargaSection, .statusSection{
+    font-size: 14px;
+}
+
+.buttonSectionTambahRestaurant{
+    display: flex;
+    margin: 20px auto;
+    font-weight: bold;
+}
+
+.buttonSectionTambahRestaurant:hover{
+    background-color: white;
+    color: #0D6EFD;
+    font-weight: bold;
+}
+
+/* ---------------------------------------------------- Responsive ---------------------------------------------------- */
+
+@media (max-width: 1340px) {
+    .containerSection {
+        grid-template-columns: auto auto auto;
+    }
+    .bodyDetailView {
+        grid-template-columns: auto auto auto;
+    }
+}
+
+@media (max-width: 1120px) {
+    .containerSection {
+        grid-template-columns: auto auto ;
+    }
+    .bodyDetailView {
+        grid-template-columns: auto auto;
+    }
+    .buttonSectionButtom {
+        flex-direction: column;
+    }
+    .buttonHome{
+        margin: 10px auto;
+    }
+    .sectionaja{
+        height: 500px;
+        border: 1px solid red
+    }
+}
+
+@media (max-width: 775px) {
+    .containerSection {
+        grid-template-columns: auto ;
+    }
+    .bodyDetailView {
+        grid-template-columns: auto ;
+    }
+    .informasiHome {
+        width: 100%;
+    }
+}

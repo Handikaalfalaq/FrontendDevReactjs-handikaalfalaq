@@ -1,17 +1,32 @@
-import { React} from 'react'
+import { React, useState } from 'react'
 import FilterNavigation from './page/main/filterNavigation.jsx'
 import Section from './page/main/section.jsx'
+import './assets/style.css'
 
 function Home(){
+    const [status, setStatus] = useState('Status');
+    const [price, setPrice] = useState('Price');
+    const [categories, setCategories] = useState('Categories');
+    
+    const updateStatus = (newStatus) => {
+        setStatus(newStatus);
+      };
+    const updatePrice = (newPrice) => {
+        setPrice(newPrice);
+      };
 
-    return(
+    const updateCategories = (newCategories) => {
+        setCategories(newCategories);
+      };
+
+
+    return( 
         <div>
-            <h1>Restauran</h1>
-            <h5 style={{fontWeight: '100', width:'700px'}}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, eum officia rem facilis velit architecto nisi cumque accusamus, illum necessitatibus voluptate veritatis ex mollitia deleniti magnam minima est sapiente voluptas!</h5>
-            <FilterNavigation/>
-            <Section/>
-
-            <button style={{display:'flex', justifyContent:'center', margin: '100px auto' , padding: '10px 300px', fontWeight:'bold'}} >LOAD MORE</button>
+            <h1 className='titleHome'>Restaurant Web</h1>
+            <h5 className='informasiHome'>Selamat datang di situs web kami, Nikmati pengalaman kuliner yang tak terlupakan dengan hidangan lezat dari berbagai restoran pilihan kami.
+            <p>Saatnya menjelajahi berbagai kuliner dari berbagai restoran yang telah kami pilihkan khusus untuk Anda.</p></h5>
+            <FilterNavigation updateStatus={updateStatus} updatePrice={updatePrice} updateCategories={updateCategories}/>
+            <Section status={status} price={price} categories={categories} />
         </div>
     )
 }
