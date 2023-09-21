@@ -12,12 +12,13 @@ function App() {
   useEffect(() => {
     axios.get(API_URL + "restaurants")
       .then(res => {
-        setDataJson(res.data);
+        setDataJson(res.data); 
       })
       .catch(error => {
         console.log(error);
       });
   }, [setDataJson]);
+  
 
   return (
     <BrowserRouter>

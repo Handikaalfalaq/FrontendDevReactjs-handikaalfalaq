@@ -7,6 +7,9 @@ import { DataContext } from '../../context';
 import FolderImage from '../../assets/folderImage';
 import { restoranBukaJamIni, hitungHargaTermurah, hitungHargaTermahal } from '../../utils/utils'
 import ModalTambahRestaurant from '../modal/modalTambahRestaurant';
+import Swal from 'sweetalert2';
+import axios from 'axios';
+import { API_URL } from '../../config/config.jsx'
  
 function Section({status, price, categories}) {
   const {dataJson, setNewDataDetailView} = useContext(DataContext);
@@ -17,7 +20,7 @@ function Section({status, price, categories}) {
   const [newCategories, setNewCategories] = useState('Categories');
   const [loading, setLoading] = useState(true);
   const [tambahRestaurant, setTambahRestaurant] = useState(false);
-  const [jumlahData, setJumlahData] = useState(8);
+  const [jumlahData, setJumlahData] = useState(8); 
   const newDataJsonSlice = newDataJson.slice(0, jumlahData);
   const navigate = useNavigate()
 
@@ -30,7 +33,6 @@ function Section({status, price, categories}) {
       setNewCategories('Categories');
       setNewDataDetailView([]);
       try {
-
         if(status === 'Open Now'){
           setNewStatus(true)
         } else if (status === 'Closed'){
@@ -83,6 +85,36 @@ function Section({status, price, categories}) {
   const openDetaiView = (index) => {
     navigate(`/detailView/${index}`);
   }
+  
+  const hapusRestaurant = (id) => {
+    console.log("dalam1", id)
+    try { 
+        console.log("dalam", id)
+        Swal.fire({
+          title: 'apakah anda yakin?',
+          text: "Data yang di hapus tidak dapat di kembalikan!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'iya, delete restaurant!'
+        }).then((result) => {
+          if (result.isConfirmed) { 
+            axios.delete(API_URL + "restaurants/" + id) 
+            Swal.fire(
+              'Deleted!',
+              'Restaurant Berhasil Di hapus',
+              'success'
+            )
+          }
+        }) 
+        setTimeout(() => {
+            window.location.reload();
+        }, 4000);
+    } catch (error) {
+      console.log('kirim datanya error', error);
+    }
+  };
 
   const handleLoadMore = () => {
     setJumlahData(jumlahData + 4);
@@ -94,7 +126,6 @@ function Section({status, price, categories}) {
 
   const handleOpenModal = () => { setTambahRestaurant(true); }
   
-
   return (
     <>
 
@@ -138,8 +169,10 @@ function Section({status, price, categories}) {
                     <ListGroup.Item className='statusSection'> <FontAwesomeIcon icon={faCircle} style={{ color: 'red' }} /> Closed</ListGroup.Item>
                   )}
               </div>
-
-              <Button className='buttonSection' onClick={() => openDetaiView(index)}>LEARN MORE</Button>
+              <div className='containerButtonSection'>
+                <Button className='buttonSection' onClick={() => openDetaiView(index)}>LEARN MORE</Button>
+                <Button className='buttonHapusRestaurant' onClick={() =>hapusRestaurant(data.id)}>Delete Restaurant</Button>
+              </div>
             </Card.Body>
           </Card>
       ))}

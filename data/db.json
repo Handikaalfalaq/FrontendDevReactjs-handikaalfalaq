@@ -1,25 +1,6 @@
 {
   "restaurants": [
     {
-      "namaRestaurant": "new Restaurant",
-      "jenisMakanan": "indonesia",
-      "daftarMenu": [
-        {
-          "namaMenu": "sate ayam",
-          "harga": "15000",
-          "ratingMenu": "5",
-          "imageMenu": "abc",
-          "informasiMenu": "sate"
-        }
-      ],
-      "ratingRestaurant": 5,
-      "status": {
-        "jamBuka": "18:30",
-        "jamTutup": "22:30"
-      },
-      "id": 1
-    },
-    {
       "namaRestaurant": "Pride Indonesian",
       "jenisMakanan": "Indonesia",
       "daftarMenu": [

@@ -56,30 +56,31 @@
     overflow: hidden;
 }
 
-.buttonCloseDetailView{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin: 20px auto;
-    font-size: 15px;
-    background-color: red;
-    border: 5px solid red;
-    padding: 4px 30px 7px;
-    border-radius: 15px;
-}
-
-.buttonCloseDetailView:hover{
-    background-color: white;
-    color: red;
-    border: 5px solid red;
-}
-
 .tidakAdaMenu{
     display: flex;
     margin: auto;
     align-items: center;
     justify-content: center;
+}
+
+.containerButton{
+    display: flex;
+    justify-content: space-around;
+} 
+
+.buttonDeleteMenu{ 
+    background-color: red;
+    border: 1px solid red;
+}
+.buttonUpdateMenu:hover{
+    background-color: white;
+    color: #0D6EFD; 
+}
+
+.buttonDeleteMenu:hover {
+    background-color: white;
+    color: red;
+    border: 1px solid red;
 }
 
 .buttonSectionTambahMenu{
@@ -88,16 +89,30 @@
     font-weight: bold;
 }
 
-.buttonSectionTambahMenu:hover{
+.buttonSectionTambahMenu:hover, .buttonUpdate:hover{
     background-color: white;
-    color: #0D6EFD;
-    font-weight: bold;
+    color: #0D6EFD; 
 }
 
-.buttonUpdateMenu{
+.buttonCloseDetailView{
     display: flex;
-    margin: 0px auto; 
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 20px auto;
+    font-size: 15px;
+    background-color: red;
+    border: 3px solid red;
+    padding: 4px 30px 7px;
+    border-radius: 15px;
 }
+
+.buttonCloseDetailView:hover{
+    background-color: white;
+    color: red;
+    border: 3px solid red;
+}
+
 /* ---------------------------------------------------- Home ---------------------------------------------------- */
 .informasiHome {
     font-weight: 100; 
@@ -159,9 +174,6 @@
     grid-gap: 5px;
 }
 
-.buttonSection {
-    width: 100%
-}
 
 .cardSection {
     width: 350px;
@@ -201,17 +213,38 @@
     font-size: 14px;
 }
 
+.containerButtonSection{
+    display: flex;
+    gap: 10px;
+}
+
+.buttonSection {
+    width: 100%
+}
+
+.buttonHapusRestaurant{
+    width: 100%;
+    background-color: red;
+    border: 1px solid red;
+}
+
 .buttonSectionTambahRestaurant{
     display: flex;
     margin: 20px auto;
     font-weight: bold;
 }
 
-.buttonSectionTambahRestaurant:hover{
+.buttonSectionTambahRestaurant:hover, .buttonSection:hover{
     background-color: white;
-    color: #0D6EFD;
-    font-weight: bold;
+    color: #0D6EFD; 
 }
+
+.buttonHapusRestaurant:hover {
+    background-color: white;
+    color: red;
+    border: 1px solid red;
+}
+
 
 /* ---------------------------------------------------- Responsive ---------------------------------------------------- */
 

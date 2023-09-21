@@ -50,7 +50,7 @@ function ModalUpdateMenu({show, onHide, dataDetileView, idMenu}) {
             }
             dataDetileView.daftarMenu[idMenu] = formData 
 
-            await axios.patch(API_URL + "restaurants/" + dataDetileView.id, dataDetileView ); 
+            await axios.patch(API_URL + "restaurants/" + dataDetileView.id, dataDetileView );
 
             onHide();
             Swal.fire({

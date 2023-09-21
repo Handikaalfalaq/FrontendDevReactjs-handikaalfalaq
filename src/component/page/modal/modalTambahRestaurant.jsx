@@ -23,7 +23,7 @@ function ModalTambahRestaurant({show, onHide}) {
 
     const handleSubmit = useMutation(async (e) => {
         try {
-            e.preventDefault(); 
+            e.preventDefault();
             const formData = {
                 namaRestaurant: formTambahRestaurant.namaRestaurant,
                 jenisMakanan: formTambahRestaurant.jenisMakanan,
@@ -34,17 +34,22 @@ function ModalTambahRestaurant({show, onHide}) {
                     jamTutup: formTambahRestaurant.jamTutup
                 }
             } 
-            
-        
-            await axios.post(API_URL + "restaurants", formData); 
-            onHide();
+
             Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Berhasil Register',
-                showConfirmButton: false,
-                timer: 3000
-            });
+                title: 'apakah anda yakin ingin menambahkan restaurant baru?',
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: 'Save',
+                denyButtonText: `Don't save`,
+              }).then((result) => { 
+                if (result.isConfirmed) {
+                    axios.post(API_URL + "restaurants", formData);
+                    onHide();
+                    Swal.fire('restaurant baru berhasil ditambahkan!', '', 'success')
+                } else if (result.isDenied) {
+                  Swal.fire('Restaurant baru batal di ditambahkan', '', 'info') 
+                }
+              })
 
             setTimeout(() => {
                 window.location.reload();

@@ -9,6 +9,9 @@ import FolderImage from '../../assets/folderImage';
 import ModalTambahMenu from '../modal/modalTambahMenu'
 import ModalUpdateRestaurant from '../modal/modalUpdateRestaurant'
 import ModalUpdateMenu from '../modal/modalUpdateMenu'
+import Swal from 'sweetalert2';
+import axios from 'axios'
+import { API_URL } from '../../config/config.jsx'
 
 function DetailView() {
   const {newDataDetailView} = useContext(DataContext);
@@ -20,7 +23,7 @@ function DetailView() {
   const [updateMenu, setUpdateMenu] = useState(false)
   const [idMenu, setIdMenu] = useState()
   const { index } = useParams();
-  const location = useLocation();  
+  const location = useLocation(); 
 
   useEffect(() => {
     const fetchData = async () => {
@@ -49,9 +52,27 @@ function DetailView() {
   const handleOpenModal = () => { setTambahMenu(true); }
 
   const handleOpenUpdateRestaurant = () => {setUpdateRestaurant(true);}
+
   const handleOpenUpdateMenu = (index) => {
     setUpdateMenu(true);
     setIdMenu(index)
+  }
+
+  const handleDeleteMenu = (index) => {
+    dataDetileView.daftarMenu.splice(index, 1);
+    axios.patch(API_URL + "restaurants/" + dataDetileView.id, dataDetileView ); 
+      Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Berhasil Register',
+          showConfirmButton: false,
+          timer: 3000
+      });
+
+      setTimeout(() => {
+          window.location.reload();
+      }, 2000);
+    console.log("dataDetileView", dataDetileView)
   }
 
   return(
@@ -94,7 +115,10 @@ function DetailView() {
                     </div>
                     <ListGroup.Item className='hargaSection'>Rp.{data.harga.toLocaleString()}</ListGroup.Item>
                     <Card.Text className="informasiMenuDetailView">{data.informasiMenu}</Card.Text>
-                    <Button className="buttonUpdateMenu" onClick={() => handleOpenUpdateMenu(index)}>Update Menu</Button>
+                    <div className='containerButton'>
+                      <Button className="buttonUpdateMenu" onClick={() => handleOpenUpdateMenu(index)}>Update Menu</Button>
+                      <Button className="buttonDeleteMenu" onClick={() => handleDeleteMenu(index)}>Delete Menu</Button>
+                    </div>
                   </Card.Body>
                 </Card>
               ))}
